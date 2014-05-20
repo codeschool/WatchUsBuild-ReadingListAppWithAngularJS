@@ -1,0 +1,83 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+/*ADDED IN*/
+
+.btn:focus {
+  outline: none;
+}
+
+.book {
+  margin-bottom: 40px;
+}
+
+.book .rating {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #7A292A;
+}
+
+book-cover {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.book .rating.goodRating {
+  color: #499130;
+}
+
+.live-preview {
+  float: right;
+  width: 48%;
+}
+
+.input-container {
+  float: left;
+  width: 48%;
+}
+
+form[name="reviewForm"] {
+  overflow: hidden;
+}
+
+label{
+  margin-right: 15px;
+}
+
+.button-from-hell {
+  padding: 0;
+}
+
+.button-from-hell button {
+  float: right;
+}

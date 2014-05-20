@@ -1,0 +1,116 @@
+<h1>Reading List</h1>
+
+<div class="row" ng-controller="ReadingListController as readingList">
+
+  <button class="btn btn-default" ng-click="readingList.showForm = !readingList.showForm">{{readingList.showForm ? "Hide Form" : "Show Form"}}</button>
+    <hr>
+
+  <form name="reviewForm" class="form-horizontal" ng-submit="readingList.addBook(book, reviewForm)" ng-show="readingList.showForm">
+
+    <section class="row well live-preview" ng-show="book.isbn">
+      <aside class="col-sm-3">
+        <book-cover></book-cover>
+
+        <p>{{book.rating || '?'}}/5</p>
+      </aside>
+      <div class="col-sm-9">
+        <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{book.title || "Title of Book"}}</a></h3>
+
+        <cite class="text-muted">Written by {{book.authors || "Author's Name"}}</cite>
+
+        <!-- David's not working line -->
+
+        <!-- <cite class="text-muted">Written by {{book.authors.join(', ') || "Author's Name"}}</cite> -->
+
+        <p>{{book.review || "No review yet."}}</p>
+
+        <book-genres></book-genres>
+      </div>
+    </section>
+    <div class="input-container">
+      <fieldset class="form-group">
+        <label for="title" class="col-sm-2 control-label">Title:</label>
+        <span class="col-sm-9">
+          <input type="text" class="form-control" id="title" ng-model="book.title"
+              placeholder="Book Title">
+        </span>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="isbn" class="control-label col-sm-2">ISBN-10:</label>
+        <span class="col-sm-9">
+          <input type="text" id="isbn" class="form-control" ng-model="book.isbn"
+              max-length="10" min-length="10"
+              placeholder="1234567890">
+        </span>
+      </fieldset>
+      <fieldset class="form-group">
+        <label class="control-label col-sm-2" for="authors">Authors</label>
+        <span class="col-sm-9">
+          <input type="text" id="authors" class="form-control" ng-model="book.authors"
+            placeholder="names of authors separated by commas"></span>
+      </fieldset>
+      <fieldset class="form-group">
+        <label class="control-label col-sm-2" for="review">Review</label>
+        <span class="col-sm-9">
+          <textarea id="review" class="form-control" cols="30" rows="3" ng-model="book.review"
+              placeholder="Book Review"></textarea>
+        </span>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="rating" class="control-label col-sm-2">Rating:</label>
+        <span class="col-sm-9">
+          <select class="form-control" id="rating" value="5" ng-model="book.rating">
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+          </select>
+        </span>
+      </fieldset>
+      <fieldset class="form-group">
+        <label class="control-label col-sm-2" for="genre">Genre</label>
+        <span class="col-sm-9"><select id="genre" class="form-control"
+            ng-model="book.genres" multiple
+            ng-options="genre for genre in readingList.genres">
+        </select></span>
+      </fieldset>
+      <fieldset class="form-group">
+        <span class="col-sm-9 col-sm-offset-2 button-from-hell">
+          <button class="btn btn-primary">Save Review</button>
+        </span>
+      </fieldset>
+
+    </div>
+  </form>
+
+  <hr>
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="book row" ng-repeat="book in readingList.books">
+      <aside class="col-sm-3">
+        <book-cover></book-cover>
+
+        <p ng-class="{goodRating: book.rating >= 3}" class="rating">{{book.rating}}/5</p>
+      </aside>
+      <div class="col-sm-9">
+        <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{book.title}}</a></h3>
+
+        <cite class="text-muted">Written by {{book.authors.join(', ')}}</cite>
+
+        <p>{{book.review}}</p>
+
+        <book-genres></book-genres>
+      </div>
+    </li>
+  </ul>
+  <aside class="col-sm-4">
+    <h4>Genres</h4>
+    <ul class="list-unstyled">
+      <li ng-repeat="genre in readingList.genres">
+        <span class="label label-primary">{{genre}}</span></li>
+    </ul>
+  </aside>
+</div> <!-- class="row" -->

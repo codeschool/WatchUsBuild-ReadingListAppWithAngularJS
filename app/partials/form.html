@@ -1,0 +1,46 @@
+<form name="reviewForm" class="form-horizontal">
+  <hr>
+  <fieldset class="form-group">
+    <label for="title" class="col-sm-1 control-label">Title:</label>
+    <span class="col-sm-10">
+      <input type="text" class="form-control" id="title"
+          placeholder="The title of your book goes here...">
+    </span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="isbn" class="control-label col-sm-1">ISBN-10:</label>
+    <span class="col-sm-10">
+      <input type="text" id="isbn" class="form-control"
+          max-length="10" min-length="10"
+          placeholder="no dashes, e.g. 1234567890">
+    </span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label class="control-label col-sm-1" for="review">Review</label>
+    <span class="col-sm-10">
+      <textarea id="review" class="form-control" cols="30" rows="3"
+          placeholder="Your review goes here..."></textarea>
+    </span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="rating" class="control-label col-sm-1">Rating:</label>
+    <span class="col-sm-10">
+      <select class="form-control" id="rating" value="5">
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+    </span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label class="control-label col-sm-1" for="genre">Genre</label>
+    <span class="col-sm-10"><select id="genre" class="form-control"><option value="">Select genre...</option></select></span>
+  </fieldset>
+  <fieldset class="form-group">
+    <span class="col-sm-10 col-sm-offset-1">
+      <button class="btn btn-primary">Save Review</button>
+    </span>
+  </fieldset>
+</form>
