@@ -1,0 +1,32 @@
+<h1>Reading List</h1>
+
+<div class="row" ng-controller='BooksController as booksCtrl'>
+  <ul class="list-unstyled col-sm-8">
+    <li ng-repeat='book in booksCtrl.books' class="book row">
+      <aside class="col-sm-3">
+        <a href="#" class="thumbnail"><img src="http://placehold.it/100x100"
+          alt="Cover of TITLE" class="full"></a>
+        <h4>{{book.rating}}/5</h4>
+      </aside>
+      <div class="col-sm-9">
+        <h3><a href="#">{{book.title}}</a></h3>
+
+        <cite class="text-muted">Written by {{book.author}}</cite>
+
+        <p>{{book.review}}</p>
+
+        <ul class="list-inline">
+          <li> <span class="label label-primary">{{book.genre}}</span> </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <aside class="col-sm-4">
+    <h4>Genres</h4>
+    <ul class="list-unstyled">
+      <li ng-repeat='genre in booksCtrl.genres'>
+        <span class="label label-primary">{{genre}}</span>
+      </li>
+    </ul>
+  </aside>
+</div> <!-- class="row" -->
