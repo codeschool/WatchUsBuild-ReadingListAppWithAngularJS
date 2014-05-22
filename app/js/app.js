@@ -7,23 +7,36 @@
   angular.module('readingList', [ ])
     .controller('ReadingListController', function(){
       this.books = books;
-
-      // if(book.rating >= 3){this.goodRatingIndeed = true;}
-
-      this.showForm = false;
-
+      // this.showForm = false;
       this.genres = genres;
 
-      this.addBook = function(book, form){
-        this.books.push(book);
 
-        form.reset().$setPristine();
-      };
-    })
+    }) // Note 2
     .directive('bookCover', function(){
       return {
         restrict: 'E',
         templateUrl: 'partials/book-cover.html'
+      };
+    })
+    .directive('reviewForm', function(){
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/review-form.html', // Note 3
+        controller: function(){
+          this.books = books;
+          this.book = {};
+          this.showForm = true;
+          this.genres = genres;
+
+          this.addBook = function(book, form){
+            console.log(book)
+            this.books.push(book);
+            form.$setPristine();
+            this.book = {};
+            this.showForm = false;
+          };
+        },
+        controllerAs: 'reviewFormCtrl',
       };
     })
     .directive('bookGenres', function(){
@@ -34,7 +47,7 @@
     })
   ;
 
-  var genres = [ 'non-fiction', 'fiction', 'fantasy' ];
+  var genres = [ 'Fable', 'Fairy tale', 'Fantasy', 'Folklore', 'Historical fiction', 'Horror', 'Humor', 'Legend', 'Metafiction', 'Mystery', 'Mythology', 'Poetry', 'Realistic fiction', 'Science fiction', 'Short story', 'Tall tale'  ];
 
   var books = [
     { title: 'Pragmatic Thinking & Learning',

@@ -81,3 +81,19 @@ label{
 .button-from-hell button {
   float: right;
 }
+
+div.genre {
+  width: 462px;
+  overflow: hidden;
+  float: right;
+  margin: 0;
+}
+
+.genre-label {
+  margin: 0;
+  width: 137px;
+  float: left;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
