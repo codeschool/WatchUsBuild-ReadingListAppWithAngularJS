@@ -2,65 +2,64 @@
 
   <section class="row well live-preview" ng-show="reviewFormCtrl.book.isbn">
     <aside class="col-sm-3">
-
-      <!-- Can't use the bookCover directive here since we can't use link. -Z -->
-      <!-- <book-cover></book-cover> -->
-      <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}"><img ng-src="http://images.amazon.com/images/P/{{reviewFormCtrl.book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{reviewFormCtrl.book.title}}" class="full"></a>
-
-
+      <!-- no, no! <book-cover></book-cover> -->
+      <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}">
+        <img ng-src="http://images.amazon.com/images/P/{{reviewFormCtrl.book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{reviewFormCtrl.book.title}}" class="full">
+      </a>
       <p>{{reviewFormCtrl.book.rating || '0'}}/5</p>
     </aside>
+
     <div class="col-sm-9">
-      <h3><a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}"
-          >{{reviewFormCtrl.book.title || "Title of Book"}}</a></h3>
-
+      <h3>
+        <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}">
+          {{reviewFormCtrl.book.title || "Title of Book"}}
+        </a>
+      </h3>
       <cite class="text-muted">Written by {{reviewFormCtrl.book.author || "Author's Name"}}</cite>
-
-      <!-- David's not working line -->
-      <!-- Doesn't work because book.authors is not an array. -Z -->
-
-      <!-- <cite class="text-muted">Written by {{book.authors.join(', ') || "Author's Name"}}</cite> -->
 
       <p>{{reviewFormCtrl.book.review || "No review yet."}}</p>
 
-      <!-- Can't use the bookGenres directive here since we can't use link. -Z -->
-      <!-- <book-genres></book-genres> -->
+      <!-- no, no! <book-genres></book-genres> -->
       <ul class="list-unstyled">
         <li ng-repeat="(genre, state) in reviewFormCtrl.book.genres">
           <span class="label label-primary" ng-show="state">{{genre}}</span>
         </li>
       </ul>
-
     </div>
   </section>
+
   <div class="input-container">
     <fieldset class="form-group">
-      <label for="title" class="col-sm-2 control-label">Title:</label>
-      <span class="col-sm-9">
-        <input type="text" class="form-control" id="title" ng-model="reviewFormCtrl.book.title"
-            placeholder="Book Title">
-      </span>
+    <label for="title" class="col-sm-2 control-label">Title:</label>
+    <span class="col-sm-9">
+      <input type="text" class="form-control" id="title" ng-model="reviewFormCtrl.book.title"
+      placeholder="Book Title">
+    </span>
     </fieldset>
+
     <fieldset class="form-group">
-      <label for="isbn" class="control-label col-sm-2">ISBN:</label>
-      <span class="col-sm-9">
-        <input type="text" id="isbn" class="form-control" ng-model="reviewFormCtrl.book.isbn"
-            maxLength="10" placeholder="ISBN-10">
-      </span>
+    <label for="isbn" class="control-label col-sm-2">ISBN:</label>
+    <span class="col-sm-9">
+      <input type="text" id="isbn" class="form-control" ng-model="reviewFormCtrl.book.isbn"
+      maxLength="10" placeholder="ISBN-10">
+    </span>
     </fieldset>
+
     <fieldset class="form-group">
-      <label class="control-label col-sm-2" for="author">Author</label>
-      <span class="col-sm-9">
-        <input type="text" id="author" class="form-control" ng-model="reviewFormCtrl.book.author"
-          placeholder="Name of the Author"></span>
+    <label class="control-label col-sm-2" for="author">Author</label>
+    <span class="col-sm-9">
+      <input type="text" id="author" class="form-control" ng-model="reviewFormCtrl.book.author"
+      placeholder="Name of the Author"></span>
     </fieldset>
+
     <fieldset class="form-group">
       <label class="control-label col-sm-2" for="review">Review</label>
       <span class="col-sm-9">
         <textarea id="review" class="form-control" cols="30" rows="3" ng-model="reviewFormCtrl.book.review"
-            placeholder="Book Review"></textarea>
+        placeholder="Book Review"></textarea>
       </span>
     </fieldset>
+
     <fieldset class="form-group">
       <label for="rating" class="control-label col-sm-2">Rating:</label>
       <span class="col-sm-9">
@@ -89,6 +88,6 @@
         <button class="btn btn-primary">Save Review</button>
       </span>
     </fieldset>
-
   </div>
+  
 </form>
