@@ -24,19 +24,20 @@
         templateUrl: 'partials/review-form.html', // Note 3
         controller: function(){
           this.books = books;
-          this.book = {};
-          this.showForm = true;
+          this.book = {genres:{}};
+          this.showForm = false;
           this.genres = genres;
 
           this.addBook = function(book, form){
             console.log(book)
             this.books.push(book);
             form.$setPristine();
-            this.book = {};
+            this.book = {genres:{}};
+
             this.showForm = false;
           };
         },
-        controllerAs: 'reviewFormCtrl',
+        controllerAs: 'reviewFormCtrl'
       };
     })
     .directive('bookGenres', function(){
@@ -47,29 +48,29 @@
     })
   ;
 
-  var genres = [ 'Fable', 'Fairy tale', 'Fantasy', 'Folklore', 'Historical fiction', 'Horror', 'Humor', 'Legend', 'Metafiction', 'Mystery', 'Mythology', 'Poetry', 'Realistic fiction', 'Science fiction', 'Short story', 'Tall tale'  ];
+  var genres = [ 'fable', 'fantasy', 'fiction', 'folklore', 'horror', 'humor', 'legend', 'metafiction', 'mystery', 'mythology', 'non-fiction', 'poetry' ];
 
   var books = [
     { title: 'Pragmatic Thinking & Learning',
-      authors: [ 'Andy Hunt' ],
+      author: 'Andy Hunt',
       isbn: '1934356050',
       review: "Loved this book!",
       rating: 4,
-      genres: [ 'non-fiction' ],
+      genres: { horror: true }
     },
     { title: 'The Age of Spiritual Machines',
-      authors: [ 'Ray Kurzweil' ],
+      authors: 'Ray Kurzweil',
       isbn: '0140282025',
       review: "Would not read again.",
       rating: 2,
-      genres: [ 'non-fiction' ],
+      genres: { fable: true }
     },
     { title: 'Elven Star: The Death Gate Cycle',
-      authors: [ 'Margaret Weiss', 'Tracy Hickman' ],
+      authors: 'Margaret Weiss',
       isbn: '0553290983',
       review: "Best fantasy series EVAR",
       rating: 5,
-      genres: [ 'fiction', 'fantasy' ],
+      genres: { fiction: true, fantasy: true }
     }
   ];
 })();

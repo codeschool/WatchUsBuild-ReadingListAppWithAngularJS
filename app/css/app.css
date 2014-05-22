@@ -39,11 +39,13 @@
   margin-bottom: 40px;
 }
 
-.book .rating {
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: 500;
+li.book > aside p.rating {
   color: #7A292A;
+  font-size: 1.2em;
+}
+
+.book .rating.goodRating {
+  color: #499130;
 }
 
 book-cover {
@@ -52,13 +54,40 @@ book-cover {
   display: inline-block;
 }
 
-.book .rating.goodRating {
-  color: #499130;
-}
-
 .live-preview {
   float: right;
   width: 48%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.live-preview > aside, li.book > aside {
+  padding: 0;
+}
+
+.live-preview > aside img, li.book > aside img {
+  width: 100%;
+}
+
+.live-preview > aside p, li.book .rating {
+  margin: 0 5%;
+  padding: 0.1em;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 0 0 0.5em 0.5em;
+  border-top-width: 0;
+  color: #888;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.live-preview > aside + div > h3, li.book > aside + div > h3 {
+  margin-top: 0;
+}
+
+.live-preview > aside + div li, li.book > aside + div li {
+  float: left;
+  margin-right: 1px;
 }
 
 .input-container {
@@ -83,17 +112,54 @@ label{
 }
 
 div.genre {
-  width: 462px;
-  overflow: hidden;
-  float: right;
+  float: left;
+  width: 75%;
   margin: 0;
+  padding: 0 15px;
+  overflow: hidden;
 }
 
 .genre-label {
-  margin: 0;
-  width: 137px;
   float: left;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+  width: 50%;
+  margin: 0;
+  cursor: pointer;
   overflow: hidden;
+  text-overflow:ellipsis;
+  text-tranform: capitalize;
+  white-space: nowrap;
+}
+
+.genre-label:hover {
+  border-color: #ddd;
+  color: #888;
+}
+
+.genre-label:active {
+  border-color: #999;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .input-container, .live-preview {
+    float: none;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  div.genre {
+    width: 100%;
+    padding: 0;
+  }
+
+  .live-preview > aside, li.book > aside {
+    float: left;
+    width: 25%;
+    margin-right: 15px;
+  }
+
+  li.book {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

@@ -3,11 +3,11 @@
 <div class="row" ng-controller="ReadingListController as readingList">
 
   <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm">{{reviewFormCtrl.showForm ? "Cancel" : "Create Review"}}</button>
-  <hr>
+  <hr />
   <!-- Note 1 -->
   <review-form></review-form>
 
-  <hr>
+  <hr ng-show="reviewFormCtrl.showForm" />
 
   <ul class="list-unstyled col-sm-8">
     <li class="book row" ng-repeat="book in readingList.books">
@@ -20,7 +20,7 @@
         <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
             >{{book.title}}</a></h3>
 
-        <cite class="text-muted">Written by {{book.authors.join(', ')}}</cite>
+        <cite class="text-muted">Written by {{book.author}}</cite>
 
         <p>{{book.review}}</p>
 
@@ -28,11 +28,13 @@
       </div>
     </li>
   </ul>
-  <aside class="col-sm-4">
+
+  <!-- Not covering this during the screencast. -->
+  <!-- <aside class="col-sm-4">
     <h4>Genres</h4>
     <ul class="list-unstyled">
       <li ng-repeat="genre in readingList.genres">
         <span class="label label-primary">{{genre}}</span></li>
     </ul>
-  </aside>
+  </aside> -->
 </div> <!-- class="row" -->
