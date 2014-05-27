@@ -9,9 +9,6 @@
     this.books = books;
     this.genres = genres;
     this.showForm = false;
-    this.changeshowForm = function(){
-      this.showForm = !this.showForm;
-    };
   })
 
   .directive('bookGenres', function(){
