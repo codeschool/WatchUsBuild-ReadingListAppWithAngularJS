@@ -1,44 +1,59 @@
 (function(){
   'use strict';
 
-  angular.module('readingList', [ ])
+
+// Declare app level module which depends on filters, and services
+  angular.module('readingList', [])
+
   .controller('ReadingListController', function(){
     this.books = books;
     this.genres = genres;
-
-  })
-  .directive('bookCover', function(){ // Note 2
-    return {
-      restrict: 'E',
-      templateUrl: 'partials/book-cover.html'
+    this.showForm = false;
+    this.changeshowForm = function(){
+      this.showForm = !this.showForm;
     };
   })
-  .directive('reviewForm', function(){
-    return {
-      restrict: 'E',
-      templateUrl: 'partials/review-form.html', // Note 3
-      controller: function(){
-        this.books = books;
-        this.book = {genres:{}};
-        this.showForm = false;
-        this.genres = genres;
 
-        this.addBook = function(book, form){
-          this.books.push(book);
-          form.$setPristine();
-          this.book = {genres:{}};
-          this.showForm = false;
-        };
-      },
-      controllerAs: 'reviewFormCtrl'
-    };
-  })
   .directive('bookGenres', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/book-genres.html'
-    };
+      templateUrl: 'partials/book-genres.html',
+      scope: {
+        genres: '='
+      }
+    }
+  })
+
+  .directive('bookCover', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/book-cover.html',
+      replace: true
+    }
+  })
+
+  .directive('reviewForm', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/review-form.html',
+      replace: true,
+      controller: function(){
+        this.book = {genres:{}};
+
+        this.addReview = function(form){
+          books.push(this.book);
+          this.book = {genres:{}};
+          form.$setPristine();
+        }
+      },
+      controllerAs: 'reviewFormCtrl',
+      scope: {
+        books: '=',
+        genres: '='
+      }
+    }
   });
+
 
   var genres = [ 'fable', 'fantasy', 'fiction', 'folklore', 'horror', 'humor', 'legend', 'metafiction', 'mystery', 'mythology', 'non-fiction', 'poetry' ];
 

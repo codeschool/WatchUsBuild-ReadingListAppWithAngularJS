@@ -1,33 +1,30 @@
 <h1>Angular Reading List of Awesome</h1>
 
-<div class="row" ng-controller="ReadingListController as readingList">
-  <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm">
-    {{reviewFormCtrl.showForm ? "Cancel" : "Create Review"}}
-  </button>
+<div class="row" ng-controller="ReadingListController as readingListCtrl">
+
+  <!-- How we did it in the screencast  -->
+  <!-- <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button> -->
+
+  <!-- Cleaned up version - putting variable changing behavior in the controller  -->
+  <button class="btn btn-default" ng-click="readingListCtrl.changeshowForm()">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+  <hr />
+  <review-form change-review-form="readingListCtrl.changeReviewForm" books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="readingListCtrl.showForm"></review-form>
   <hr />
 
-  <!-- Note 1 -->
-  <review-form></review-form>
-  <hr ng-show="reviewFormCtrl.showForm" />
-
   <ul class="list-unstyled col-sm-8">
-    <li class="book row" ng-repeat="book in readingList.books">
-      <aside class="col-sm-3">
-        <book-cover></book-cover>
-        <p ng-class="{goodRating: book.rating >= 3}" class="rating">{{book.rating}}/5</p>
-      </aside>
-
+    <li class="book row" ng-repeat="book in readingListCtrl.books">
+      <book-cover></book-cover>
       <div class="col-sm-9">
-        <h3>
-          <a href="http://www.amazon.com/gp/product/{{book.isbn}}"
-            >{{book.title}}</a>
-        </h3>
+        <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{book.title}}</a></h3>
+
         <cite class="text-muted">Written by {{book.author}}</cite>
+
         <p>{{book.review}}</p>
 
-        <book-genres></book-genres>
+        <book-genres genres="book.genres"></book-genres>
+
       </div>
     </li>
   </ul>
-
 </div>
