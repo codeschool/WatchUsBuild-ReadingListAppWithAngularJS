@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-  <li>
-    <span class="label label-primary" ng-repeat="(genre, state) in genres" ng-show="state">{{genre}}</span>
+  <li ng-repeat="(genre, state) in genres" ng-show="state">
+    <span class="label label-primary">{{genre}}</span>
   </li>
 </ul>
