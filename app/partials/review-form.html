@@ -1,4 +1,4 @@
-<form name="reviewForm" class="form-horizontal" ng-submit="reviewFormCtrl.addBook(reviewFormCtrl.book, reviewForm)" ng-show="reviewFormCtrl.showForm">
+<form name="reviewForm" class="form-horizontal" ng-submit="reviewFormCtrl.addReview(reviewForm, reviewFormCtrl.book)">
 
   <section class="row well live-preview" ng-show="reviewFormCtrl.book.isbn">
     <aside class="col-sm-3">
@@ -74,7 +74,7 @@
     <fieldset class="form-group">
       <label class="control-label col-sm-2" >Genre:</label>
       <div class="genre">
-        <label ng-repeat="genre in reviewFormCtrl.genres" for="{{genre}}" class="genre-label form-control">
+        <label ng-repeat="genre in genres" for="{{genre}}" class="genre-label form-control">
           <input type="checkbox" name="genre" id="{{genre}}" ng-model="reviewFormCtrl.book.genres[genre]" />
           {{genre}}
         </label>

@@ -2,11 +2,7 @@
 
 <div class="row" ng-controller="ReadingListController as readingListCtrl">
 
-  <!-- How we did it in the screencast  -->
-  <!-- <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button> -->
-
-  <!-- Cleaned up version - putting variable changing behavior in the controller  -->
-  <button class="btn btn-default" ng-click="readingListCtrl.changeshowForm()">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+  <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
   <hr />
   <review-form change-review-form="readingListCtrl.changeReviewForm" books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="readingListCtrl.showForm"></review-form>
   <hr />
