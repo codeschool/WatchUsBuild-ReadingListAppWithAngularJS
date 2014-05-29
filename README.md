@@ -14,7 +14,7 @@ The seed app doesn't do much, just shows how to wire two controllers and views t
 To get you started you can simply clone the AngularJSSTB repository and install the dependencies:
 
 ### Prerequisites
-Code School's Beginning Angular Course: [Shaping up with Angular.js](https://www.codeschool.com/courses/shaping-up-with-angu2lar-js)
+Code School's Beginning Angular Course: [Shaping up with Angular.js](http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro)
 
 You need git to clone the angular-seed repository. You can get it by:
 `git clone git@github.com:codeschool/AngularJSSTB.git`
