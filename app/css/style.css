@@ -125,7 +125,7 @@ div.genre {
   cursor: pointer;
   overflow: hidden;
   text-overflow:ellipsis;
-  text-tranform: capitalize;
+  text-transform: capitalize;
   white-space: nowrap;
 }
 
